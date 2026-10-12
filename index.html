@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>⭐ Salto Estelar</title>
+
+<!-- viewport móvil: sin zoom, a pantalla completa, respetando el notch -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#080c22">
+<meta name="description" content="Juego endless-runner de un solo toque. Hecho con HTML, CSS y JavaScript.">
+
+<!-- Para que se vea a pantalla completa si lo añades a la pantalla de inicio -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Salto Estelar">
+
+<!-- Icono e instalación en el móvil (Añadir a pantalla de inicio) -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icono-192.png">
+<link rel="apple-touch-icon" href="icono-192.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+  <!-- Aquí se dibuja todo el juego -->
+  <canvas id="lienzo"></canvas>
+
+  <!-- Truco para medir el área segura (notch) desde JavaScript -->
+  <div id="sondaSegura"></div>
+
+  <!-- Botones flotantes -->
+  <div class="hud-botones">
+    <button id="btnSonido" class="icono" type="button" title="Sonido" aria-label="Sonido">🔊</button>
+    <button id="btnPausa"  class="icono" type="button" title="Pausa"  aria-label="Pausa">❚❚</button>
+    <button id="btnAjustes" class="icono" type="button" title="Ajustes" aria-label="Ajustes">⚙️</button>
+  </div>
+
+  <!-- Panel de ajustes: se genera solo desde game.js -->
+  <div id="panel" class="panel oculto">
+    <div class="panel-caja">
+      <div class="panel-cabecera">
+        <h2>⚙️ Ajustes del juego</h2>
+        <p class="pista">Mueve los controles y verás el cambio al instante. Se guardan en este teléfono.</p>
+      </div>
+
+      <div id="campos" class="campos"></div>
+
+      <div class="panel-acciones">
+        <button id="btnReiniciar" class="boton" type="button">Valores por defecto</button>
+        <button id="btnCerrar" class="boton primario" type="button">Listo</button>
+      </div>
+
+      <details class="detalle">
+        <summary>Ver el JSON para pegarlo en game.js</summary>
+        <textarea id="json" rows="10" readonly spellcheck="false"></textarea>
+        <button id="btnCopiar" class="boton" type="button">Copiar JSON</button>
+      </details>
+
+      <p class="pista final">
+        También puedes abrir <b>game.js</b> en cualquier editor y cambiar el bloque
+        <code>CONFIG</code> de arriba del todo. No hace falta instalar nada.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
